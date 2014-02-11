@@ -13,6 +13,7 @@ public class Project {
   private String namespace;
 
   public Project() {
+    String foo = "bar";
   }
 
   public Project(int id, Account owner, String name, String description, String namespace) {
@@ -23,12 +24,20 @@ public class Project {
     this.namespace = namespace;
   }
 
+  public Account getOwner() {
+    return owner;
+  }
+
+  public void setOwner(Account owner) {
+    this.owner = owner;
+  }
+
   public int getId() {
     return id;
   }
 
-  public Account getOwner() {
-    return owner;
+  public void setId(int id) {
+    this.id = id;
   }
 
   public String getName() {
@@ -41,6 +50,10 @@ public class Project {
 
   public String getDescription() {
     return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 
   public String getNamespace() {

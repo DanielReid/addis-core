@@ -22,7 +22,7 @@ import java.util.Collection;
  * Created by daan on 2/6/14.
  */
 @Controller
-@RequestMapping(value="")
+@RequestMapping(value = "/projects")
 public class ProjectController {
 
   final static Logger logger = LoggerFactory.getLogger(ProjectController.class);
@@ -32,7 +32,7 @@ public class ProjectController {
   @Inject
   private AccountRepository accountRepository;
 
-  @RequestMapping(value="/projects", method= RequestMethod.GET)
+  @RequestMapping(value = "", method = RequestMethod.GET)
   @ResponseBody
   public Collection<Project> query(Principal currentUser, @RequestParam(required = false) Integer owner) throws MethodNotAllowedException {
     Account user = accountRepository.findAccountByUsername(currentUser.getName());
@@ -44,20 +44,20 @@ public class ProjectController {
     }
   }
 
- @RequestMapping(value="", method=RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE})
-	@ResponseBody
-	public Project create(HttpServletRequest request, HttpServletResponse response, Principal currentUser, @RequestBody Project body) {
-		Account user = accountRepository.findAccountByUsername(currentUser.getName());
-		Project Project = projectsRepository.create(user, body.getName(), body.getDescription(), body.getNamespace());
-		response.setStatus(HttpServletResponse.SC_CREATED);
-		response.setHeader("Location", request.getRequestURL() + "/" + Project.getId());
-		return Project;
-	}
+  @RequestMapping(value = "", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE})
+  @ResponseBody
+  public Project create(HttpServletRequest request, HttpServletResponse response, Principal currentUser, @RequestBody Project body) {
+    Account user = accountRepository.findAccountByUsername(currentUser.getName());
+    Project Project = projectsRepository.create(user, body.getName(), body.getDescription(), body.getNamespace());
+    response.setStatus(HttpServletResponse.SC_CREATED);
+    response.setHeader("Location", request.getRequestURL() + "/" + Project.getId());
+    return Project;
+  }
 
   @ResponseStatus(HttpStatus.FORBIDDEN)
-	@ExceptionHandler(MethodNotAllowedException.class)
-	public String handleMethodNotAllowed(HttpServletRequest request) {
-		logger.error("Access to resource not authorised.\n{}", request.getRequestURL());
-		return "redirect:/error/403";
-	}
+  @ExceptionHandler(MethodNotAllowedException.class)
+  public String handleMethodNotAllowed(HttpServletRequest request) {
+    logger.error("Access to resource not authorised.\n{}", request.getRequestURL());
+    return "redirect:/error/403";
+  }
 }
