@@ -267,7 +267,36 @@
             <ADDIS_CORE_DB_PASSWORD>${env.ADDIS_CORE_DB_PASSWORD}</ADDIS_CORE_DB_PASSWORD>
           </systemProperties>
         </configuration>
+        <executions>
+        <execution>
+          <id>tomcat-run</id>
+          <goals>
+            <goal>run-war-only</goal>
+          </goals>
+          <phase>pre-integration-test</phase>
+          <configuration>
+            <path>/</path>
+            <fork>true</fork>
+            <systemProperties>
+              <ADDIS_CORE_DB_DRIVER>${env.ADDIS_CORE_DB_DRIVER}</ADDIS_CORE_DB_DRIVER>
+              <ADDIS_CORE_DB_URL>${env.ADDIS_CORE_DB_URL}</ADDIS_CORE_DB_URL>
+              <ADDIS_CORE_DB_USERNAME>${env.ADDIS_CORE_DB_USERNAME}</ADDIS_CORE_DB_USERNAME>
+              <ADDIS_CORE_DB_PASSWORD>${env.ADDIS_CORE_DB_PASSWORD}</ADDIS_CORE_DB_PASSWORD>
+            </systemProperties>
+
+         
+          </configuration>
+        </execution>
+        <execution>
+          <id>tomcat-shutdown</id>
+          <goals>
+            <goal>shutdown</goal>
+          </goals>
+          <phase>post-integration-test</phase>
+        </execution>
+        </executions>
       </plugin>
+
       <plugin>
         <groupId>org.liquibase</groupId>
         <artifactId>liquibase-maven-plugin</artifactId>
