@@ -52,6 +52,7 @@ define(
     var dependencies = [
       'ui.router',
       'ngSanitize',
+      'ui.select',
       'addis.controllers',
       'addis.directives',
       'addis.resources',
@@ -59,7 +60,6 @@ define(
       'addis.filters',
       'addis.interceptors',
       'addis.directives',
-      'ui.select2',
       'ngToast'
     ];
     var gemtcWebDependencies = [
@@ -112,6 +112,14 @@ define(
         });
       }
     ]);
+
+    // app.config(function(uiSelectConfig) {
+    //   uiSelectConfig.theme = 'selectize';
+    // });
+
+    app.config(function(uiSelectConfig) {
+  uiSelectConfig.theme = 'select2';
+});
 
     app.config(['Tasks', '$stateProvider', '$urlRouterProvider', 'ANALYSIS_TYPES', '$httpProvider', '$animateProvider', 'MCDARouteProvider',
       function(Tasks, $stateProvider, $urlRouterProvider, ANALYSIS_TYPES, $httpProvider, $animateProvider, MCDARouteProvider) {

@@ -17,6 +17,9 @@
     <link rel="stylesheet" type="text/css" href="app/js/bower_components/nvd3/src/nv.d3.css">
     <link rel="stylesheet" type="text/css" href="app/js/bower_components/ngtoast/dist/ngToast.min.css">
     <link rel="stylesheet" type="text/css" href="<c:url value="/app/css/addis-drugis.css" />">
+    <link rel="stylesheet" type="text/css" href="app/js/bower_components/angular-ui-select/dist/select.min.css">
+    <link rel="stylesheet" type="text/css" href="app/js/bower_components/select2/select2.css">
+    <!-- <link rel="stylesheet" type="text/css" href="app/js/bower_components/selectize/dist/css/selectize.default.css"> -->
 
     <script src="app/js/bower_components/requirejs/require.js" data-main="app/js/main.js"></script>
   </head>
