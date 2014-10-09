@@ -25,7 +25,7 @@
 
   <body>
     <session-expired-directive></session-expired-directive>
-    <ng-toast></ng-toast>
+    <addis-toast style="width:100%; text-align: center; position:fixed; color:white; z-index:999"></addis-toast>
     <form method="POST" action="<c:url value="/signout" />" id="signout_form">
       <input type="hidden" name="_csrf" value="<c:out value="${_csrf.token}" />" />
     </form>
@@ -43,7 +43,7 @@
         <!-- Right Nav Section -->
         <ul class="right">
           <li class="has-dropdown not-click">
-            <a href="#"><img src="http://www.gravatar.com/avatar/${userMD5}?s=45&d=mm"><c:out value="${account.firstName} ${account.lastName} " /></a>
+            <a href="#"><img src="http://www.gravatar.com/avatar/${userMD5}?s=43&d=mm"><c:out value="${account.firstName} ${account.lastName} " /></a>
             <ul class="dropdown">
               <li>
                 <a href="#" onClick="signout()">Sign out</a>

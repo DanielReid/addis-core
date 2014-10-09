@@ -1,7 +1,7 @@
 'use strict';
 define(['angular'], function() {
-  var dependencies = [];
-  var addisToastMessageDirective = function() {
+  var dependencies = ['AddisMessageService'];
+  var addisToastMessageDirective = function(AddisMessageService) {
     return {
       replace: true,
       transclude: true,
@@ -12,11 +12,12 @@ define(['angular'], function() {
       link: function(scope, element) {
         scope.animatedClose = function() {
           $(element).fadeOut(800, function() {
+            AddisMessageService.removeMessage(scope.message);
             scope.close();
           });
         };
-      }
-      templateUrl: 'partials/addisToastMessage.html'
+      },
+      templateUrl: 'app/partials/addisToastMessage.html'
     };
   };
 
