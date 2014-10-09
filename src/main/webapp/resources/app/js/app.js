@@ -14,7 +14,6 @@ define(
     'interceptors',
     'resources',
     'services',
-    'ngToast',
     'gemtc-web/controllers',
     'gemtc-web/resources',
     'gemtc-web/constants',
@@ -58,8 +57,7 @@ define(
       'addis.services',
       'addis.filters',
       'addis.interceptors',
-      'addis.directives',
-      'ngToast'
+      'addis.directives'
     ];
     var gemtcWebDependencies = [
       'gemtc.controllers',

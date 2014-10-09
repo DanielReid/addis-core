@@ -15,7 +15,6 @@
     <link rel="stylesheet" type="text/css" href="app/js/bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="app/js/bower_components/jslider/dist/jquery.slider.min.css">
     <link rel="stylesheet" type="text/css" href="app/js/bower_components/nvd3/src/nv.d3.css">
-    <link rel="stylesheet" type="text/css" href="app/js/bower_components/ngtoast/dist/ngToast.min.css">
     <link rel="stylesheet" type="text/css" href="<c:url value="/app/css/addis-drugis.css" />">
     <link rel="stylesheet" type="text/css" href="app/js/bower_components/angular-ui-select/dist/select.min.css">
     <link rel="stylesheet" type="text/css" href="app/js/bower_components/select2/select2.css">
