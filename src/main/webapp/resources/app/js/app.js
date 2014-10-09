@@ -15,7 +15,6 @@ define(
     'resources',
     'services',
     'ngToast',
-    'angular-select2',
     'gemtc-web/controllers',
     'gemtc-web/resources',
     'gemtc-web/constants',

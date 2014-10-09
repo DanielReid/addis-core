@@ -19,7 +19,7 @@ require.config({
     'moment': 'bower_components/moment/min/moment.min',
     'mmfoundation': 'bower_components/angular-foundation/mm-foundation',
     'angularanimate': 'bower_components/angular-animate/angular-animate.min',
-    'ngToast': 'bower_components/ngtoast/dist/ngToast'
+    'ngToast': 'bower_components/ngtoast/dist/ngToast',
     'ngSanitize': 'bower_components/angular-sanitize/angular-sanitize.min'
   },
   baseUrl: 'app/js',
@@ -49,6 +49,7 @@ require.config({
     },
     'ngToast' : {
       deps: ['angular']
+    },
     'angular-select': {
       deps: ['angular', 'jQuery'],
       exports: 'angular-select'
