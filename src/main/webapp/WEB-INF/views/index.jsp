@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="app/js/bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="app/js/bower_components/jslider/dist/jquery.slider.min.css">
     <link rel="stylesheet" type="text/css" href="app/js/bower_components/nvd3/src/nv.d3.css">
+    <link rel="stylesheet" type="text/css" href="app/js/bower_components/ngtoast/dist/ngToast.min.css">
     <link rel="stylesheet" type="text/css" href="<c:url value="/app/css/addis-drugis.css" />">
 
     <script src="app/js/bower_components/requirejs/require.js" data-main="app/js/main.js"></script>
@@ -22,6 +23,7 @@
 
   <body>
     <session-expired-directive></session-expired-directive>
+    <ng-toast></ng-toast>
     <form method="POST" action="<c:url value="/signout" />" id="signout_form">
       <input type="hidden" name="_csrf" value="<c:out value="${_csrf.token}" />" />
     </form>

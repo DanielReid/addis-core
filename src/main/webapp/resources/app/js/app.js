@@ -6,12 +6,15 @@ define(
     'mcda/config',
     'foundation',
     'angular-ui-router',
+    'angular-select',
+    'ngSanitize',
     'controllers',
     'directives',
     'filters',
     'interceptors',
     'resources',
     'services',
+    'ngToast',
     'angular-select2',
     'gemtc-web/controllers',
     'gemtc-web/resources',
@@ -48,6 +51,7 @@ define(
     ];
     var dependencies = [
       'ui.router',
+      'ngSanitize',
       'addis.controllers',
       'addis.directives',
       'addis.resources',
@@ -55,7 +59,8 @@ define(
       'addis.filters',
       'addis.interceptors',
       'addis.directives',
-      'ui.select2'
+      'ui.select2',
+      'ngToast'
     ];
     var gemtcWebDependencies = [
       'gemtc.controllers',

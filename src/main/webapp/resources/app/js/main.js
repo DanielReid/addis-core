@@ -19,7 +19,8 @@ require.config({
     'MathJax': 'bower_components/MathJax/MathJax.js?config=TeX-MML-AM_HTMLorMML',
     'moment': 'bower_components/moment/min/moment.min',
     'mmfoundation': 'bower_components/angular-foundation/mm-foundation',
-    'angularanimate': 'bower_components/angular-animate/angular-animate.min'
+    'angularanimate': 'bower_components/angular-animate/angular-animate.min',
+    'ngToast': 'bower_components/ngtoast/dist/ngToast'
   },
   baseUrl: 'app/js',
   shim: {
@@ -52,6 +53,9 @@ require.config({
       exports: 'angular-resource'
     },
     'angular-ui-router': {
+      deps: ['angular']
+    },
+    'ngToast' : {
       deps: ['angular']
     },
     'd3': {
