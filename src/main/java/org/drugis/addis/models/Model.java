@@ -44,7 +44,7 @@ public class Model {
   public final static String VARIANCE_HETEROGENEITY_PRIOR_TYPE = "variance";
   public final static String PRECISION_HETEROGENEITY_PRIOR_TYPE = "precision";
   @Transient
-  boolean hasResult = false;
+  private String runStatus;
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
@@ -186,14 +186,6 @@ public class Model {
     return sensitivity;
   }
 
-  public boolean isHasResult() {
-    return hasResult;
-  }
-
-  public void setHasResult() {
-    this.hasResult = true;
-  }
-
   public Boolean getArchived() {
     return archived;
   }
@@ -209,6 +201,15 @@ public class Model {
   public void setArchivedOn(Date archivedOn) {
     this.archivedOn = archivedOn;
   }
+
+  public String getRunStatus() {
+    return runStatus;
+  }
+
+  public void setRunStatus(String runStatus) {
+    this.runStatus = runStatus;
+  }
+
 
   @JsonIgnore
   public String getModelTypeTypeAsString() {
@@ -277,11 +278,11 @@ public class Model {
 
     Model model = (Model) o;
 
-    if (hasResult != model.hasResult) return false;
+    if (runStatus != null ? !runStatus.equals(model.runStatus) : model.runStatus != null) return false;
     if (id != null ? !id.equals(model.id) : model.id != null) return false;
     if (taskUrl != null ? !taskUrl.equals(model.taskUrl) : model.taskUrl != null) return false;
-    if (!analysisId.equals(model.analysisId)) return false;
-    if (!title.equals(model.title)) return false;
+    if (analysisId != null ? !analysisId.equals(model.analysisId) : model.analysisId != null) return false;
+    if (title != null ? !title.equals(model.title) : model.title != null) return false;
     if (linearModel != null ? !linearModel.equals(model.linearModel) : model.linearModel != null) return false;
     if (modelType != null ? !modelType.equals(model.modelType) : model.modelType != null) return false;
     if (heterogeneityPrior != null ? !heterogeneityPrior.equals(model.heterogeneityPrior) : model.heterogeneityPrior != null)
@@ -296,17 +297,19 @@ public class Model {
     if (link != null ? !link.equals(model.link) : model.link != null) return false;
     if (outcomeScale != null ? !outcomeScale.equals(model.outcomeScale) : model.outcomeScale != null) return false;
     if (regressor != null ? !regressor.equals(model.regressor) : model.regressor != null) return false;
-    return sensitivity != null ? sensitivity.equals(model.sensitivity) : model.sensitivity == null;
+    if (sensitivity != null ? !sensitivity.equals(model.sensitivity) : model.sensitivity != null) return false;
+    if (archived != null ? !archived.equals(model.archived) : model.archived != null) return false;
+    return archivedOn != null ? archivedOn.equals(model.archivedOn) : model.archivedOn == null;
 
   }
 
   @Override
   public int hashCode() {
-    int result = (hasResult ? 1 : 0);
+    int result = runStatus != null ? runStatus.hashCode() : 0;
     result = 31 * result + (id != null ? id.hashCode() : 0);
     result = 31 * result + (taskUrl != null ? taskUrl.hashCode() : 0);
-    result = 31 * result + analysisId.hashCode();
-    result = 31 * result + title.hashCode();
+    result = 31 * result + (analysisId != null ? analysisId.hashCode() : 0);
+    result = 31 * result + (title != null ? title.hashCode() : 0);
     result = 31 * result + (linearModel != null ? linearModel.hashCode() : 0);
     result = 31 * result + (modelType != null ? modelType.hashCode() : 0);
     result = 31 * result + (heterogeneityPrior != null ? heterogeneityPrior.hashCode() : 0);
@@ -318,6 +321,8 @@ public class Model {
     result = 31 * result + (outcomeScale != null ? outcomeScale.hashCode() : 0);
     result = 31 * result + (regressor != null ? regressor.hashCode() : 0);
     result = 31 * result + (sensitivity != null ? sensitivity.hashCode() : 0);
+    result = 31 * result + (archived != null ? archived.hashCode() : 0);
+    result = 31 * result + (archivedOn != null ? archivedOn.hashCode() : 0);
     return result;
   }
 

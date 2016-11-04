@@ -493,8 +493,8 @@ public class ModelServiceTest {
 
     List<Model> resultModels = modelService.get(modelIds);
     assertEquals(2, resultModels.size());
-    assertTrue(resultModels.get(0).isHasResult());
-    assertFalse(resultModels.get(1).isHasResult());
+    assertEquals("done", resultModels.get(0).getRunStatus());
+    assertEquals(null, resultModels.get(1).getRunStatus());
   }
 
 }

@@ -12,7 +12,6 @@ import org.drugis.addis.patavitask.PataviTaskUriHolder;
 import org.drugis.addis.patavitask.repository.PataviTaskRepository;
 import org.drugis.addis.patavitask.service.PataviTaskService;
 import org.drugis.addis.problems.model.NetworkMetaAnalysisProblem;
-import org.drugis.addis.problems.model.PairwiseNetworkProblem;
 import org.drugis.addis.problems.service.ProblemService;
 import org.drugis.addis.trialverse.service.impl.ReadValueException;
 import org.drugis.addis.util.WebConstants;
@@ -32,19 +31,19 @@ public class PataviTaskServiceImpl implements PataviTaskService {
   public final static String PATAVI_URI_BASE = System.getenv("PATAVI_URI");
   final static Logger logger = LoggerFactory.getLogger(PataviTaskServiceImpl.class);
   @Inject
-  ModelService modelService;
+  private ModelService modelService;
 
   @Inject
-  AnalysisRepository analysisRepository;
+  private AnalysisRepository analysisRepository;
 
   @Inject
-  PataviTaskRepository pataviTaskRepository;
+  private PataviTaskRepository pataviTaskRepository;
 
   @Inject
-  ProblemService problemService;
+  private ProblemService problemService;
 
   @Inject
-  WebConstants webConstants;
+  private WebConstants webConstants;
 
   @Override
   public PataviTaskUriHolder getGemtcPataviTaskUriHolder(Integer projectId, Integer analysisId, Integer modelId) throws Exception, ReadValueException, InvalidTypeForDoseCheckException {
@@ -66,12 +65,8 @@ public class PataviTaskServiceImpl implements PataviTaskService {
 
       NetworkMetaAnalysisProblem problemWithModelApplied = problemService.applyModelSettings(problem, model);
 
-      if(Model.PAIRWISE_MODEL_TYPE.equals(model.getModelTypeTypeAsString())) {
-
-        PairwiseNetworkProblem  pairwiseProblem = new PairwiseNetworkProblem(problemWithModelApplied, model.getPairwiseDetails());
-        pataviTaskUrl = pataviTaskRepository.createPataviTask(webConstants.getPataviGemtcUri(), pairwiseProblem.buildProblemWithModelSettings(model, preferredDirection));
-
-      } else if (Model.NETWORK_MODEL_TYPE.equals(model.getModelTypeTypeAsString())
+      if (Model.PAIRWISE_MODEL_TYPE.equals((model.getModelTypeTypeAsString()))
+              ||Model.NETWORK_MODEL_TYPE.equals(model.getModelTypeTypeAsString())
               || Model.NODE_SPLITTING_MODEL_TYPE.equals(model.getModelTypeTypeAsString())
               || Model.REGRESSION_MODEL_TYPE.equals(model.getModelTypeTypeAsString())) {
         pataviTaskUrl = pataviTaskRepository.createPataviTask(webConstants.getPataviGemtcUri(), problemWithModelApplied.buildProblemWithModelSettings(model, preferredDirection));
