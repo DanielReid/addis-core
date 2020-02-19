@@ -61,7 +61,7 @@ After creating your dataset, navigate to it by clicking on its title.
 \subsection{Creating dataset concepts}
 
 First, we create the relevant concepts for our dataset.
-Click on the 'Dataset concepts' button, and use the 'Create concept' button to create the appropriate drugs, variables and unit, as shown in figure~\ref{fig:concepts}.
+Click on the 'Dataset concepts' button, and use the 'Add concept' button to create the appropriate drugs, variables and unit, as shown in figure~\ref{fig:concepts}.
 
 \begin{figure}[!ht]
   \centering
@@ -70,11 +70,15 @@ Click on the 'Dataset concepts' button, and use the 'Create concept' button to c
 \label{fig:concepts}
 \end{figure}
 
-The ADDIS study data repository has an audit trail, recording all changes and letting you use different versions of a dataset for analysis as desired.
-New versions are created by explicitly committing changes to the database.
-
 Once you've created the desired concepts, commit them using the green 'Commit changes' button at the top-left, entering a descriptive message such as 'create concepts.'
-Navigate back to your dataset view by clicking its name in the breadcrumbs trail at the top of the page.
+\textit{Only after committing are your changes actually saved.}
+Navigate back to your dataset view by clicking its name in the breadcrumbs trail at the top of the page. 
+
+Notice that the the message you typed is now shown in the blue box at the top of the screen.
+This box shows the latest change to happen to the dataset.
+You can click on the 'Dataset history' link in the box to see a list of everything that happened to the dataset over time.
+This is is the audit trail, recording all changes and letting you view and analyse different versions of a dataset.
+
 
 \textbf{As a general note, it is unfortunately wise before committing your work to open the ADDIS website in a separate tab to see whether you're still logged in, and if not, to log in again in this tab.
 For security reasons, we log you out after a period of inactivity, and working on data without committing doesn't count at the moment.
@@ -253,6 +257,8 @@ Notice how the evidence network and table are automatically updated as your sele
 In the network diagram you can see which interventions are directly compared in at least one study: they are connected with a line.
 The lines get thicker as more studies compare those two interventions; the circles get larger as the total sample size for that intervention increases.
 You can override the automatic evidence selection by unchecking specific arms in the evidence table, or by changing which measurement moment's data will be used.
+Notice that the names of the studies in your evidence network are links: you can always click on them to inspect the study.
+Anyone else viewing your analysis can therefore also explore the underlying data.
 
 Once you are satisfied with your evidence network, click the 'Add model' button and take some time to look at the available model creation options if you are interested.
 Unfortunately, explaining them goes beyond the scope of this tutorial.
@@ -260,8 +266,8 @@ Please see the \href{https://addis.drugis.org/manual.html#model-creation}{ADDIS 
 The default model is a random-effects consistency model, which is fine for now.
 Please enter a descriptive model title (e.g. 'RE consistency') and create the model.
 After brief computation, you will see the model results.
-Again, a full explanation of the results is beyond the scope of this tutorial.
 One of the main outputs of a network consistency model is the relative effects table (Figure~\ref{fig:relativeEffects}), which shows how much stronger the effect in question is for each individual comparison between treatments in the network (including indirect ones).
+Again, a full explanation of the results is beyond the scope of this tutorial.
 
 \begin{figure}[!ht]
   \centering
@@ -274,7 +280,12 @@ One of the main outputs of a network consistency model is the relative effects t
 
 One of the strengths of ADDIS is that when new evidence comes to light or mistakes are fixed, analytical projects can be automatically updated when their source dataset changes.
 Navigate to the \href{https://addis.drugis.org/#/users/12/datasets/c190e953-051c-4cf5-ac10-332984a14a43}{tutorial dataset} and copy Study 3 (a three-arm study introducing a new drug) to your dataset.
-Now click on the 'Projects' tab and go to your analytical project.
+After the copy is complete, go to the dataset concepts and also add a drug concept for the newly-added drug (Drug 3).
+Different datasets don't share concepts, so the concept mappings of the study you copied need to be updated.
+Click on Study 3 and map all its concepts to those of your dataset.
+Don't forget to commit these changes as well.
+
+Click on the 'Projects' tab and go to your analytical project.
 Note that there is now a warning indicating that your project is based on an older version of the dataset (Figure~\ref{fig:updateWarning}).
 
 \begin{figure}[!ht]
@@ -284,17 +295,18 @@ Note that there is now a warning indicating that your project is based on an old
 \label{fig:updateWarning}
 \end{figure}
 
-Of course this is fine in many cases, but if you know that you want to include the changes in your analyses, you can click the 'Update' button.
-Take a moment to read the explanation of what will happen.
-Most importantly, your old analysis will not be lost, but simply archived (i.e. hidden by default).
-You can undo the archiving operation.
+In this case we know that we want to include the changes in your analyses.
+Click the 'Update' button and take a moment to read the explanation of what will happen.
+Most importantly, your old analysis will not be lost, but archived (i.e. hidden by default, but still accessible).
+You can undo the archiving at any point.
 
-Confirm the update, click 'Add intervention' and add a new intervention for Drug 3.
+Confirm the update, and in the new project click 'Add intervention' and add a new intervention for Drug 3.
 Navigate to the 'Analyses' tab and click on your evidence synthesis. 
-Note that your model has not been updated, but instead there is none.
-The assumption here is that if the possibilities of evidence networks change, users would prefer to recreate their models with the new evidence.
+Note that there is no updated version of your model.
+This is because the update affected which evidence networks are possible by adding a drug.
+In this case we assume that users would prefer to adjust their networks before creating new models.
 Add 'Drug 3' to the selected interventions and again create a relative effects consistency model.
-Take a moment to explore the new results. 
+Take a moment to explore the new results.
 
 \section{Conclusion}
 
